@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyPulse Weather Dashboard</title>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Top Navigation Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="brand">
+                <div class="brand-icon">
+                    <i data-lucide="cloud-sun"></i>
+                </div>
+                <div>
+                    <h1>SkyPulse Weather</h1>
+                    <p>Live Forecasts • Powered by Open-Meteo</p>
+                </div>
+            </div>
+            
+            <!-- Quick Preset Cities -->
+            <div class="preset-cities">
+                <span class="preset-label">Popular:</span>
+                <button onclick="handleQuickSearch('London')">London</button>
+                <button onclick="handleQuickSearch('Tokyo')">Tokyo</button>
+                <button onclick="handleQuickSearch('New York')">New York</button>
+                <button onclick="handleQuickSearch('Sydney')">Sydney</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        
+        <!-- Search Section -->
+        <section class="search-section">
+            <form id="searchForm" onsubmit="handleFormSubmit(event)" class="search-form">
+                <div class="search-input-wrapper">
+                    <i data-lucide="search" class="search-icon"></i>
+                    <input 
+                        type="text" 
+                        id="cityInput" 
+                        placeholder="Search city (e.g. Paris, Tokyo, Toronto)..." 
+                        autocomplete="off"
+                    />
+                    <button type="submit" id="searchBtn" class="search-btn">
+                        <span>Search</span>
+                        <i data-lucide="arrow-right"></i>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Autosuggest Dropdown -->
+            <div id="suggestionsDropdown" class="suggestions-dropdown hidden"></div>
+        </section>
+
+        <!-- Dynamic Content Mount Point -->
+        <div id="weatherDisplayArea" class="weather-display-area">
+            <!-- Initial Empty State -->
+            <div id="emptyState" class="empty-state">
+                <div class="empty-icon-wrapper">
+                    <i data-lucide="map-pin"></i>
+                </div>
+                <h3>No City Selected</h3>
+                <p>Search for a location above or click one of the popular city suggestions to view live weather details.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>SkyPulse Weather App • Built with Vanilla JS & Open-Meteo API</p>
+            <p class="footer-note">Zero API Key Required • Responsive & Accessible</p>
+        </div>
+    </footer>
+
+    <!-- Application Script -->
+    <script src="script.js"></script>
+</body>
+</html>
